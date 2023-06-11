@@ -74,7 +74,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/users/{id}/upgrade")
+    @PutMapping("/users/{id}/password")
     public ResponseEntity<User> updatePassword(
             @PathVariable("id") Long id,
             @RequestBody String password){
