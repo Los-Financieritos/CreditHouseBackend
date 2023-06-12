@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.upc.finanzas.proyecto.entities.Client;
 import pe.upc.finanzas.proyecto.entities.User;
 import pe.upc.finanzas.proyecto.exception.ResourceNotFoundException;
+import pe.upc.finanzas.proyecto.exception.ValidationException;
 import pe.upc.finanzas.proyecto.repository.UserRepository;
 
 import java.util.List;
@@ -37,6 +39,7 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user){
+        ValidateUser(user);
         User newUser=
                 userRepository.save(
                         new User(user.getName(),
@@ -47,7 +50,19 @@ public class UserController {
                                 user.getPassword()
                                 )
                 );
+
+
         return new ResponseEntity<User>(newUser,HttpStatus.CREATED);
+    }
+
+    private void ValidateUser(User user){
+        if( userRepository.existsByEmail(user.getEmail()) ){
+            throw new ValidationException("Ya existe un usuario con este email");
+        }
+        if( userRepository.existsByUsername(user.getUsername())){
+            throw new ValidationException("Ya existe un usuario con este nombre de usuario");
+        }
+
     }
     //PUT=>http:localthost:8080/api/users/1
     @PutMapping("/users/{id}")
@@ -85,4 +100,6 @@ public class UserController {
         return new ResponseEntity<User>(userRepository.save(userUpdate),
                 HttpStatus.OK);
     }
+
+
 }

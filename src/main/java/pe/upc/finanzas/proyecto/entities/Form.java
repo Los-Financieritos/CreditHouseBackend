@@ -3,14 +3,15 @@ package pe.upc.finanzas.proyecto.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
-
 @Entity
 @Table(name="forms")
 
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Form {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -34,36 +35,36 @@ public class Form {
     @Column(name = "initial", nullable = false)
     private Double initial;
 
-    @Column(name = "sustainable", length = 2, nullable = false)
-    private String sustainable;
+    @Column(name = "sustainable", nullable = false)
+    private Boolean sustainable;
 
-    @Column(name = "help", length = 2, nullable = false)
-    private String help;
+    @Column(name = "help",nullable = false)
+    private Boolean  help;
 
     //Financial Data
 
     @Column(name = "tea", nullable = false)
     private Double tea;
 
-    @Column(name = "sDegMensual", nullable = false)
+    @Column(name = "s_deg_mensual", nullable = false)
     private Double sDegMensual;
 
-    @Column(name = "sInmAnual", nullable = false)
+    @Column(name = "s_inm_anual", nullable = false)
     private Double sInmAnual;
 
     @Column(name = "time", nullable = false)
     private Long time;
 
     @Column(name = "grace_period", nullable = false)
-    private Long grace_period;
+    private Long gracePeriod;
 
     //Information
 
     @Column(name = "per_initial", nullable = false)
-    private Double per_initial;
+    private Double perInitial;
 
-    @Column(name = "bbb", nullable = false)
-    private Long bbb;
+    @Column(name = "bbp", nullable = false)
+    private Double bbp;
 
     @Column(name = "montof", nullable = false)
     private Double montof;
@@ -74,27 +75,5 @@ public class Form {
     @Column(name = "cuota", nullable = false)
     private Double cuota;
 
-    public Form(Long client_id, String currency, String entity, Double price, Double initial, String sustainable, String help, Double tea, Double sDegMensual, Double sInmAnual, Long time, Long grace_period, Double per_initial, Long bbb, Double montof, Double tcea, Double cuota) {
-        this.client_id = client_id;
-        this.currency = currency;
-        this.entity = entity;
-        this.price = price;
-        this.initial = initial;
-        this.sustainable = sustainable;
-        this.help = help;
-        this.tea = tea;
-        this.sDegMensual = sDegMensual;
-        this.sInmAnual = sInmAnual;
-        this.time = time;
-        this.grace_period = grace_period;
-        this.per_initial = per_initial;
-        this.bbb = bbb;
-        this.montof = montof;
-        this.tcea = tcea;
-        this.cuota = cuota;
-    }
 
-    public Form() {
-
-    }
 }

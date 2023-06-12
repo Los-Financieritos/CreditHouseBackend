@@ -30,11 +30,9 @@ public class ClientController {
     }
 
     //GET=>http:localthost:8080/api/clients/1
-    @GetMapping("/clients/{id}")
-    public ResponseEntity<Client> getClientById(@PathVariable("id") Long id){
-        Client client= clientRepository.findById(id)
-                .orElseThrow(()-> new ResourceNotFoundException("Not found client with id="+id));
-
+    @GetMapping("/clients/{dni}")
+    public ResponseEntity<Client> getClientById(@PathVariable("dni") Long dni){
+        Client client= clientRepository.getClientByDni(dni);
 
         return new ResponseEntity<Client>(client,HttpStatus.OK);
     }

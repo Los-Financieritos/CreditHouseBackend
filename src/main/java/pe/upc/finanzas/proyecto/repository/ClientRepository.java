@@ -5,4 +5,6 @@ import pe.upc.finanzas.proyecto.entities.Client;
 
 public interface ClientRepository extends JpaRepository<Client,Long> {
     boolean existsClientByDni(Long dni);
+
+    Client getClientByDni(Long dni);
 }
