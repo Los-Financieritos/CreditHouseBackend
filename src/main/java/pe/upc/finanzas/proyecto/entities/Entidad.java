@@ -9,38 +9,33 @@ import jakarta.persistence.*;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 
 public class Entidad {
     @Id
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "ruc")
+    private Long ruc;
 
-    @Column(name="name", length=25, nullable = false)
+    @Column(name="name", length=40, nullable = false)
     private String name;
 
-    @Column(name="lastname",length=25 , nullable = false)
-    private String lastname;
+    @Column(name="cinicial", nullable = false)
+    private Double cinicial;
 
-    @Column(name="username", length=20, nullable = false)
-    private String username;
+    @Column(name="mminimo", nullable = false)
+    private Double mminimo;
 
-    @Column(name="company", nullable = false)
-    private String company;
+    @Column(name="mmaximo", nullable = false)
+    private Double mmaximo;
 
-    @Column(name = "email", nullable = false)
-    private String email;
+    @Column(name="tminimo", nullable = false)
+    private Double tminimo;
 
-    @Column(name="password", nullable = false)
-    private String password;
+    @Column(name="tmaximo", nullable = false)
+    private Double tmaximo;
 
-    public User(String name, String lastname, String username, String company, String email, String password) {
-        this.name = name;
-        this.lastname = lastname;
-        this.username = username;
-        this.company = company;
-        this.email = email;
-        this.password = password;
-    }
+    @Column(name="plazomeses", nullable = false)
+    private Long plazomeses;
 
 
 }
