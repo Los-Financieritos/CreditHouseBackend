@@ -35,8 +35,10 @@ public class Entidad {
     @Column(name="tmaximo", nullable = false)
     private Double tmaximo;
 
-    @Column(name="plazomeses", nullable = false)
-    private Long plazomeses;
+    @Column(name="pminimo", nullable = false)
+    private Long pminimo;
 
+    @Column(name="pmaximo", nullable = false)
+    private Long pmaximo;
 
 }

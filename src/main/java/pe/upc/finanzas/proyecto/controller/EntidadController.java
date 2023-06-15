@@ -2,6 +2,7 @@ package pe.upc.finanzas.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import pe.upc.finanzas.proyecto.entities.Entidad;
+import pe.upc.finanzas.proyecto.entities.Form;
 import pe.upc.finanzas.proyecto.repository.EntidadRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
@@ -23,4 +24,5 @@ public class EntidadController {
         List<Entidad> entidades=entidadRepository.findAll();
         return new ResponseEntity<List<Entidad>>(entidades, HttpStatus.OK);
     }
+
 }
