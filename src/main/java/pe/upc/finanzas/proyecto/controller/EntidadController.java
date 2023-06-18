@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pe.upc.finanzas.proyecto.entities.Entidad;
 import pe.upc.finanzas.proyecto.entities.User;
 import pe.upc.finanzas.proyecto.exception.ValidationException;
+import pe.upc.finanzas.proyecto.entities.Form;
 import pe.upc.finanzas.proyecto.repository.EntidadRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
