@@ -5,4 +5,6 @@ import pe.upc.finanzas.proyecto.entities.Entidad;
 
 public interface EntidadRepository extends JpaRepository<Entidad,Long> {
 
+    boolean existsByRuc(Long ruc);
+
 }

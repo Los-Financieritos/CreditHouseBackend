@@ -36,7 +36,14 @@ public class UserController {
 
         return new ResponseEntity<User>(user,HttpStatus.OK);
     }
+    //GET=>http:localthost:8080/api/users/1
+    @GetMapping("/exists-user")
+    public ResponseEntity<User> existUserByEmailAndPassword(@RequestParam String email,
+                                            @RequestParam String password){
+        User user= userRepository.getUserByEmailAndPassword(email, password);
 
+        return new ResponseEntity<User>(user,HttpStatus.OK);
+    }
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user){
         ValidateUser(user);

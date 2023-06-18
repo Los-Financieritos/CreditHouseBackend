@@ -26,8 +26,7 @@ public class FormController {
 
     @PostMapping("/forms")
     public ResponseEntity<Form> createForm(@RequestBody Form form){
-        Form newForm=
-                formRepository.save(form);
+        Form newForm= formRepository.save(form);
         return new ResponseEntity<Form>(newForm,HttpStatus.CREATED);
     }
 
