@@ -31,7 +31,7 @@ public class ClientController {
 
     //GET=>http:localthost:8080/api/clients/1
     @GetMapping("/clients/{dni}")
-    public ResponseEntity<Client> getClientById(@PathVariable("dni") Long dni){
+    public ResponseEntity<Client> getClientById(@PathVariable("dni") String dni){
         Client client= clientRepository.getClientByDni(dni);
 
         return new ResponseEntity<Client>(client,HttpStatus.OK);
@@ -50,13 +50,17 @@ public class ClientController {
         }
     }
     //PUT=>http:localthost:8080/api/clients/1
-    @PutMapping("/clients/{id}")
+    @PutMapping("/clients/{dni}")
     public ResponseEntity<Client> updateClient(
-            @PathVariable("id") Long id,
+            @PathVariable("dni") String dni,
             @RequestBody Client client) {
-        Client clientUpdate = clientRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found post with id=" + id));
-        clientUpdate.setName(client.getName());
+        if(!clientRepository.existsClientByDni(dni)){
+           throw new ValidationException("“No existe un cliente con el dni ingresado.");
+        }
+
+        Client clientUpdate = clientRepository.findByDni(dni);
+
+        clientUpdate = client;
 
         return new ResponseEntity<Client>(clientRepository.save(clientUpdate),
                 HttpStatus.OK);

@@ -3,6 +3,8 @@ package pe.upc.finanzas.proyecto.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name="forms")
 
@@ -55,7 +57,10 @@ public class Form {
     @Column(name = "time", nullable = false)
     private Long time;
 
-    @Column(name = "grace_period", nullable = false)
+    @Column(name = "tipo", length = 10, nullable = true)
+    private String tipo;
+
+    @Column(name = "grace_period", nullable = true)
     private Long gracePeriod;
 
     //Information
@@ -75,5 +80,10 @@ public class Form {
     @Column(name = "cuota", nullable = false)
     private Double cuota;
 
+    @Column(name = "asesor", length = 50, nullable = false)
+    private String asesor;
+
+    @Column(name = "fecha", nullable = false)
+    private Date fecha;
 
 }

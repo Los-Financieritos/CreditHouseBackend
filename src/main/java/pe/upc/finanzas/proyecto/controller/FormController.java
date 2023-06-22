@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.finanzas.proyecto.entities.Form;
+import pe.upc.finanzas.proyecto.exception.ResourceNotFoundException;
 import pe.upc.finanzas.proyecto.repository.FormRepository;
 
 import java.util.List;
@@ -30,4 +31,10 @@ public class FormController {
         return new ResponseEntity<Form>(newForm,HttpStatus.CREATED);
     }
 
+    @GetMapping("/forms/{id}")
+    public ResponseEntity<Form> getFormById(@PathVariable("id") Long id){
+        Form form = formRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Not found form with id="+id));
+        return new ResponseEntity<Form>(form, HttpStatus.OK);
+    }
 }

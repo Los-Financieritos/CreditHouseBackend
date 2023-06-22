@@ -17,8 +17,8 @@ import java.util.Date;
 public class Client {
     //Client information
     @Id
-    @Column(name = "dni")
-    private Long dni;
+    @Column(name = "dni", length = 8, nullable = false)
+    private String dni;
 
     @Column(name = "name", length = 25, nullable = false)
     private String name;
@@ -46,19 +46,19 @@ public class Client {
 
     //Husband/wife information
 
-    @Column(name = "dniPartner")
-    private Long dni_partner;
+    @Column(name = "dniPartner", length = 8, nullable = true)
+    private String dni_partner;
 
-    @Column(name = "namePartner", length = 25, nullable = false)
+    @Column(name = "namePartner", length = 25, nullable = true)
     private String namePartner;
 
-    @Column(name = "lastnamePartner", length = 25, nullable = false)
+    @Column(name = "lastnamePartner", length = 25, nullable = true)
     private String lastnamePartner;
 
-    @Column(name = "birthPartner", nullable = false)
+    @Column(name = "birthPartner", nullable = true)
     private Date birthPartner;
 
-    @Column(name = "phonePartner", length = 13, nullable = false)
+    @Column(name = "phonePartner", length = 13, nullable = true)
     private String phonePartner;
 
     //Laboral information
